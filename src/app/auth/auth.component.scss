@@ -1,0 +1,47 @@
+.max{
+    width: 100%;
+}
+
+.content{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.mini_container{
+    width: 50%;
+    box-shadow: 5px 5px 10px #be1c1180;
+}
+
+mat-icon{
+    color: #fff;
+    font-size: 5.5em;
+    width: auto;
+    height: auto;
+}
+
+.iconPersonContainer{
+    background-color: #be1c11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+}
+
+.actionButtons{
+    width: 80%;
+    background-color: #be1c11ea;
+    color: #fff;
+}
+
+.actionButtonsContent{
+    margin-bottom: -35px;
+}
+
+.changeCat{
+    margin-bottom: 5px;
+}

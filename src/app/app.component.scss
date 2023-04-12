@@ -1,0 +1,11 @@
+/* ----------------- changing style of material------------------------ */
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #f44336 !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #f44336 !important;
+}

@@ -1,0 +1,26 @@
+<div mat-dialog-content>
+
+    <div *ngIf="data == 'buy'">
+        <h2 >PROCESSING PAYMENT</h2>
+    
+        <mat-form-field class="col-xs-12">
+            <mat-label>How much do you want to buy?</mat-label>
+            <input matInput type="number" [(ngModel)]="dataAction">
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="data == 'sell'">
+        <h2 >PROCESSING SELLING</h2>
+
+        <mat-form-field class="col-xs-12">
+            <mat-label>How much do you want to sell?</mat-label>
+            <input matInput type="number" [(ngModel)]="dataAction">
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div>
+    <button mat-button mat-dialog-close class="col-xs-6">No</button>
+    <button mat-button cdkFocusInitial class="col-xs-6" (click)="onOk()" [disabled]="dataAction<0">Ok</button>
+</div>

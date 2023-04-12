@@ -1,0 +1,85 @@
+<mat-card class="container myCont">
+    <mat-card-content>
+        <div class="col-sm-4">
+            <h1><b>Cryptocoins investor</b></h1> 
+        </div>
+        <div class="col-sm-8">
+            <div class="col-xs-8">
+                <p>Welcome {{user.username}}</p>
+                <p>Your budget is {{user.deposit}}</p>
+            </div>
+            <div class="col-xs-4">
+                <button mat-button type="button" color="warn" (click)="logOut()"> Log Out </button>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-content>
+
+        <mat-form-field class="col-xs-12">
+            <mat-label>Filter</mat-label>
+            <input matInput type="text" [(ngModel)]="inputValue" (ngModelChange)="filter()" #input>
+        </mat-form-field>
+
+            
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 col-xs-12">
+
+            <!-- Icon Column -->
+            <ng-container matColumnDef="icon" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef class="toCenter"> Icon </th>
+                <td mat-cell *matCellDef="let coin"> 
+                    <img [src]="coinImg(coin.crypto_name)" class="coinsImg">
+                </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let coin"> {{coin.crypto_name}} </td>
+            </ng-container>
+            
+            <!-- Value Column -->
+            <ng-container matColumnDef="value" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef class="toCenter"> Value </th>
+                <td mat-cell *matCellDef="let coin" class="toCenter"> {{coin.value}}€</td>
+            </ng-container>
+            
+            <!-- Stock Column -->
+            <ng-container matColumnDef="stock" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef class="toCenter"> Stock </th>
+                <td mat-cell *matCellDef="let coin" class="toCenter"> {{coin.stock}} </td>
+            </ng-container>
+
+            <!-- Property Column -->
+            <ng-container matColumnDef="in_property" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef class="toCenter"> The amount you have </th>
+                <td mat-cell *matCellDef="let coin" class="toCenter"> {{coin.in_property}} </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions" class="col-xs-2">
+                <th mat-header-cell *matHeaderCellDef class="toCenter"> Actions </th>
+                <td mat-cell *matCellDef="let coin"> 
+                    <div class="col-xs-6" *ngIf="coin.can_sell">
+                        <button mat-button type="button" class="btn btn-success myBtn" (click)="openDialog('sell', coin.crypto_id)">Sell</button>
+                    </div>
+
+                    <div [ngClass]="coin.can_sell? 'col-xs-6' : 'col-xs-12'">
+                        <button mat-button type="button" class="myBtnRed" (click)="openDialog('buy', coin.crypto_id)">Buy</button>
+                    </div>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator class="col-xs-12" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.data.length" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+</mat-card>
