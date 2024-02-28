@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
+This is the first proyect that I had to make when I started coding. I had to deliver this in a hackaton when I started my first job.
+
+I learned more about Angular and about Backend, because I also had to make the ms with the Database and the endpoints
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
